@@ -44,6 +44,12 @@ server = app.server
 winner_list = np.sort(df['Winner'].unique())
 year_list = np.sort(df['Year'].unique())
 
+dropdown_style = {
+    'backgroundColor': '#1e1e1e',
+    'color': 'white',
+    'border': '1px solid #555'
+}
+
 app.layout = html.Div(style={'backgroundColor': '#1e1e1e', 'color': 'white'}, children=[
     html.H1("FIFA World Cup Finals Dashboard", style={'textAlign': 'center'}),
 
@@ -72,7 +78,7 @@ app.layout = html.Div(style={'backgroundColor': '#1e1e1e', 'color': 'white'}, ch
             id='country-dropdown',
             options=[{'label': c, 'value': c} for c in winner_list],
             placeholder="Select a country",
-            style={'backgroundColor': '#333', 'color': 'white'}
+            style=dropdown_style
         ),
         html.Div(id='country-wins-output', style={'paddingTop': '10px'})
     ], style={'padding': '20px'}),
@@ -83,7 +89,7 @@ app.layout = html.Div(style={'backgroundColor': '#1e1e1e', 'color': 'white'}, ch
             id='year-dropdown',
             options=[{'label': str(y), 'value': y} for y in year_list],
             placeholder="Select a year",
-            style={'backgroundColor': '#333', 'color': 'white'}
+            style=dropdown_style
         ),
         html.Div(id='year-result-output', style={'paddingTop': '10px'})
     ], style={'padding': '20px'})
